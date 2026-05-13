@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresh Choice — Checkout</title>
+  <link rel="stylesheet" href="./src/checkoutpage.css" />
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="logo">
+      Fresh Ch<span class="logo-dot"></span>ice
+    </div>
+  </header>
+
+  <!-- Main Page -->
+  <main class="page">
+    <h1 class="page-title">Checkout</h1>
+
+    <div class="checkout-grid">
+
+      <!-- LEFT COLUMN -->
+      <div class="left-col">
+
+        <!-- Cart -->
+        <div class="card">
+          <p class="card-title">Your Cart</p>
+          <div id="cart-items"></div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="card">
+          <p class="card-title">Contact Information</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fullname">Full Name</label>
+              <input class="form-input" id="fullname" type="text" placeholder="Jane Doe" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" id="email" type="email" placeholder="jane@example.com" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input class="form-input" id="phone" type="tel" placeholder="+31 6 12345678" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="postcode">Postcode</label>
+              <input class="form-input" id="postcode" type="text" placeholder="1234 AB" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="address">Address (Netherlands only)</label>
+            <input class="form-input" id="address" type="text" placeholder="Fake Street 221, Amsterdam" />
+          </div>
+        </div>
+
+        <!-- Dietary Filters -->
+        <div class="card">
+          <p class="card-title">Dietary Filters</p>
+          <div class="filter-tags">
+            <span class="filter-tag active" data-filter="vegan" onclick="toggleFilter(this)">
+              <span class="check">✓</span> Vegan
+            </span>
+            <span class="filter-tag" data-filter="gluten-free" onclick="toggleFilter(this)">
+              <span class="check">✓</span> Gluten-Free
+            </span>
+            <span class="filter-tag" data-filter="organic" onclick="toggleFilter(this)">
+              <span class="check">✓</span> Organic
+            </span>
+            <span class="filter-tag" data-filter="nut-free" onclick="toggleFilter(this)">
+              <span class="check">✓</span> Nut-Free
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-col">
+
+        <!-- Delivery Method -->
+        <div class="card">
+          <p class="card-title">Delivery Method</p>
+          <div class="delivery-option selected" id="opt-home" onclick="selectDelivery('home')">
+            <div class="delivery-option-header">
+              <div class="radio-circle"><div class="radio-dot"></div></div>
+              <span class="delivery-label">Home Delivery</span>
+              <span class="eco-tag">🌿 Eco</span>
+              <span class="delivery-price">€4.95</span>
+            </div>
+            <div class="delivery-desc">Sustainable delivery using electric vehicles to reduce CO₂ emissions</div>
+          </div>
+          <div class="delivery-option" id="opt-pickup" onclick="selectDelivery('pickup')">
+            <div class="delivery-option-header">
+              <div class="radio-circle"><div class="radio-dot"></div></div>
+              <span class="delivery-label">Store Pickup</span>
+              <span class="delivery-price free">Free</span>
+            </div>
+            <div class="delivery-desc">Pick up your order at our store at your convenience</div>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="card">
+          <p class="card-title">Order Summary</p>
+          <div class="summary-line"><span>Subtotal</span><span id="subtotal">€0.00</span></div>
+          <div class="summary-line"><span>Delivery Fee</span><span id="delivery-fee">€4.95</span></div>
+          <hr class="summary-divider" />
+          <div class="summary-total"><span>Total</span><span id="total">€0.00</span></div>
+          <button class="btn-order" onclick="placeOrder()">Complete Order</button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal container -->
+  <div id="modal-area"></div>
+
+</body>
+</html>
