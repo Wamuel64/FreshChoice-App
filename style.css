@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding-left: 5px;
+}
+body {
+    margin: 0px;
+}
+
+.cart {
+    position: relative;
+    padding-right: 10px;
+}
+
+.counter {
+    display: flex;
+    width: 17px;
+    height: 17px;
+    background-color: #FBC02D;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    right: -5%;
+    margin-right: 13px;
+}
+
+/*! The logo and cart are not alligned anymore. Discuss with group tomorrow!
