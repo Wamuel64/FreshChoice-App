@@ -157,9 +157,10 @@ Respond ONLY with a valid JSON object, no markdown, no backticks, no explanation
     const raw = data.text.trim().replace(/```json|```/g, '').trim();
     const meal = JSON.parse(raw);
 
-    // --- STAGE 1: CREATE THE COMPLETELY NEW MATCHED LIST ---
+    //Matching ingredient list
     meal.validIngredientsList = [];
 
+    //Run a loop for each ingredient in the meal
     meal.ingredients.forEach(ingredientStr => {
       const cleanIngredient = ingredientStr.toLowerCase();
       
@@ -168,7 +169,7 @@ Respond ONLY with a valid JSON object, no markdown, no backticks, no explanation
         cleanIngredient.includes(p.product_name.toLowerCase())
       );
 
-      // If found, push it to the list. If NOT found, it gets completely ignored!
+      // If found, push it to the list ingredient list. If NOT found, it gets completely ignored!
       if (matchedProduct) {
         meal.validIngredientsList.push({
           id: matchedProduct.id,
@@ -239,23 +240,23 @@ Respond ONLY with a valid JSON object, no markdown, no backticks, no explanation
   `;
 
   container.querySelector('#add-to-cart-btn').addEventListener('click', () => {
-    // STAGE 2: LOOP THROUGH THE LIST AND ADD TO CART USING YOUR EXACT LOGIC
+    //Loop through ingredients list and add to cart using the same code as in the grocery page
     meal.validIngredientsList.forEach(item => {
       const id = item.id;
       const name = item.name;
       const price = item.price;
-
-      // --- START OF YOUR EXACT CODE BLOCK ---
-      const cart = JSON.parse(localStorage.getItem('freshchoice_cart')) || [];
+      //Going to local storage to check what is in the cart already
+      const cart = JSON.parse(localStorage.getItem('freshchoice_cart')) || []; 
       const existing = cart.find(item => item.id === id);
-      if (existing) {
+      if (existing) { //If item already exists in cart, add 1
         existing.qty += 1;
-      } else {
+      } else { //If new to cart, add the details
         cart.push({ id, name, price, qty: 1 });
       }
-      localStorage.setItem('freshchoice_cart', JSON.stringify(cart));
+      localStorage.setItem('freshchoice_cart', JSON.stringify(cart)); //Update local storage cart details
     });
     alert(`Ingredients added to cart!`);
-    updateCartCounter();
+    updateCartCounter(); //Amelias cart counter function 
   });
 }
+updateCartCounter();
