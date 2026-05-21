@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+    <title>FreshChoice</title>
+  </head>
+  <body>
+    <header> <!--The header-->
+        <a href="index.html">
+            <img src="images/Fresh Choice Logo V2.svg">
+        </a>
+
+        <div class="cart">
+            <a href="checkout.html">
+                <img src="images/Cart transparent icon V2.svg">
+            </a>
+            <span class="counter">0</span>
+        </div>
+    </header>
+    <main><!--The main content-->
+      <div id="app"> <!--Where the entire app is contained-->
+        <div class="search_container">
+          <input 
+            type="text" 
+            id="product_search" 
+            placeholder="Search for groceries..." 
+            autocomplete="off"
+          >
+        </div>
+
+        <div id="product_grid" class="product_grid" style="padding-bottom: 70px;"></div><!-- Grid Container creator-->
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
